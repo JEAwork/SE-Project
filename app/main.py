@@ -12,7 +12,7 @@ settings.database_password
 #sql create models
 models.Base.metadata.create_all(bind=engine)
 
-origins = ["https://EagleEye.com"]
+origins = ["*"]
 
 app = FastAPI()
 app.add_middleware(
@@ -30,7 +30,6 @@ app.include_router(auth.router)
 #get request method url: "/"
 @app.get("/")
 def root():
-    print("changes")
     return {"message": "Hello World! and all"}
 
 
