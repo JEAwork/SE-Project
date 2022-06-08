@@ -10,9 +10,9 @@ from fastapi.middleware.cors import CORSMiddleware
 settings.database_password
 
 #sql create models
-#models.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
-origins = ["hhtps://EagleEye.com"]
+origins = ["https://EagleEye.com"]
 
 app = FastAPI()
 app.add_middleware(
