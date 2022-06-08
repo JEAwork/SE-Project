@@ -30,7 +30,9 @@ app.include_router(auth.router)
 #get request method url: "/"
 @app.get("/")
 def root():
+    print("changes")
     return {"message": "Hello World! and all"}
+
 
 #Pathway
 #venv\Scripts\activate.bat 
