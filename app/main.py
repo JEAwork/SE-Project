@@ -37,3 +37,4 @@ def root():
 #Pathway
 #venv\Scripts\activate.bat 
 #uvicorn app.main:app --reload
+#https://git.heroku.com/create-eagleeye.git
