@@ -14,6 +14,10 @@ class Post(Base):
                         server_default=text('Now()'))
     owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     owner = relationship("User")
+    type_of_job = Column(String, nullable=False)
+    job_status = Column(String, server_default='Available')
+    #job_Course=relationship("User")
+
 
 class User(Base):
     __tablename__="users"
@@ -23,4 +27,5 @@ class User(Base):
     created_at = Column(TIMESTAMP(timezone=True), nullable = False, 
                         server_default=text('Now()'))
     phone_number = Column(String)
+    Course=Column(String, nullable=False)
 

@@ -65,7 +65,7 @@ def delete_post(id: int, db: Session = Depends(get_db), current_user: int = Depe
          detail= f"post with id: {id} does not exist")
 #check if post is the current users
     if post.owner_id != current_user:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not Aurhotrized to perform action")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not Authorized to perform action")
     post_query.delete(synchronize_session=False)
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
@@ -87,7 +87,7 @@ def update_post(id: int, updated_post:schemas.PostCreate, db: Session = Depends(
          detail= f"post with id: {id} does not exist")
 #check if post is the current users
     if post.owner_id != current_user:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not Aurhotrized to perform action")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not Authorized to perform action")
     post_query.update(updated_post.dict(), synchronize_session=False)
     db.commit()
     return post_query.first()
