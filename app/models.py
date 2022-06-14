@@ -14,9 +14,7 @@ class Post(Base):
                         server_default=text('Now()'))
     owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     owner = relationship("User")
-    #type_of_job = Column(String, nullable=False)
-    #job_status = Column(String, server_default='Available')
-    #job_Course=relationship("User")
+    job_status = Column(String, server_default='Available', nullable=False)
 
 
 class User(Base):
