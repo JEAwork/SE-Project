@@ -37,7 +37,7 @@ def create_posts(post: schemas.PostCreate, db: Session = Depends(get_db), curren
     return new_post
 
 #see a post
-@router.get("/{id}", response_model=schemas.Post)
+@router.get("/{id}", response_model=schemas.PostOut)
 #create dependency so that user has to be logged in
 def get_post(id: int,  db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
 #sql get post code
