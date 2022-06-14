@@ -27,5 +27,12 @@ class User(Base):
     created_at = Column(TIMESTAMP(timezone=True), nullable = False, 
                         server_default=text('Now()'))
     phone_number = Column(String)
-    #Course=Column(String, nullable=False)
+    course=Column(String, nullable=False)
+    
+class Job(Base):
+    __tablename__="job"
+    user_id = Column(Integer, ForeignKey(
+        "user.id", ondelette="CASCADE"), primary_key=True)
+    post_id = Column(Integer, ForeignKey(
+        "posts.id", ondelette="CASCADE"), primary_key=True)
 
