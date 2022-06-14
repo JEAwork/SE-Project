@@ -19,14 +19,14 @@ def vote(job: schemas.job, db: Session = Depends(database.get_db), current_user:
     found_job = job_query.first()
     if (vote.dir == 1):
         if found_job:
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"user {current_user.id} has already voted on post {job.post_id}")
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"user {current_user.id} has already applied for post {job.post_id}")
         new_job = models.Vote(post_id = job.post_id, ser_id=current_user.id)
         db.add(new_job)
         db.commit()
         return {"message": "successful added vote"}
     else:
         if not found_job:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Vote does not exist")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job does not exist")
 
         job_query.delete(synchronize_session=False)
         db.commit()
